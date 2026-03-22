@@ -1,34 +1,136 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Animation keyframes */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.2); }
+  50% { box-shadow: 0 0 40px rgba(245, 158, 11, 0.4); }
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+@keyframes scroll-indicator {
+  0%, 100% { opacity: 1; transform: translateY(0); }
+  50% { opacity: 0.5; transform: translateY(8px); }
 }
 
-.App-link {
-    color: #61dafb;
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+@keyframes beam {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Animation utilities */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-scroll-indicator {
+  animation: scroll-indicator 2s ease-in-out infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* Hero background effects */
+.hero-gradient {
+  background: radial-gradient(ellipse at center top, rgba(245, 158, 11, 0.12) 0%, transparent 50%),
+              radial-gradient(ellipse at 30% 80%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+              #050A14;
+}
+
+/* Road line animation */
+.road-line {
+  background: linear-gradient(90deg, transparent, #F59E0B, transparent);
+  animation: beam 3s ease-in-out infinite;
+}
+
+/* Section styling */
+.section-padding {
+  @apply py-20 md:py-32 px-6 md:px-8;
+}
+
+/* Bento grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+  }
+  
+  .bento-grid .bento-item:first-child {
+    grid-column: span 2;
+  }
+}
+
+/* Timeline styling */
+.timeline-line {
+  background: linear-gradient(to bottom, transparent, #F59E0B, transparent);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 10px 40px rgba(245, 158, 11, 0.1);
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-amber-500 text-black font-semibold rounded-sm px-6 py-3 transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply bg-amber-400;
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+}
+
+.btn-secondary {
+  @apply border border-white/20 text-white rounded-sm px-6 py-3 transition-all duration-300 backdrop-blur-sm;
+}
+
+.btn-secondary:hover {
+  @apply bg-white/10 border-white/40;
+}
+
+/* Architecture diagram */
+.architecture-node {
+  @apply bg-[#0F1623]/80 backdrop-blur-md border border-white/10 rounded-sm p-6 text-center;
+}
+
+.architecture-connector {
+  @apply w-px h-8 bg-gradient-to-b from-amber-500/50 to-transparent mx-auto;
+}
+
+/* Partner logo placeholder */
+.partner-logo-placeholder {
+  @apply bg-[#0F1623]/50 border border-white/10 rounded-sm p-6 flex items-center justify-center text-slate-500 transition-all duration-300;
+}
+
+.partner-logo-placeholder:hover {
+  @apply border-amber-500/30 bg-[#0F1623]/80;
 }

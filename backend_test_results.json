@@ -1,0 +1,44 @@
+{
+  "total_tests": 6,
+  "passed_tests": 6,
+  "failed_tests": 0,
+  "success_rate": 100.0,
+  "test_details": [
+    {
+      "test": "API Root Endpoint",
+      "success": true,
+      "details": "Status: 200, Response: NSRSN API - Nordic Smart Road Stud Network",
+      "timestamp": "2026-03-22T21:56:13.239662"
+    },
+    {
+      "test": "Contact Form Submission",
+      "success": true,
+      "details": "Status: 200, ID: 4e26679e-4c01-4508-bea4-cf7cc8d50769, Message: Thank you for your inquiry. We will be in touch shortly.",
+      "timestamp": "2026-03-22T21:56:13.391966"
+    },
+    {
+      "test": "Contact Form Validation",
+      "success": true,
+      "details": "5/5 validation tests passed",
+      "timestamp": "2026-03-22T21:56:14.226746"
+    },
+    {
+      "test": "Get Contact Submissions",
+      "success": true,
+      "details": "Status: 200, Found 1 submissions",
+      "timestamp": "2026-03-22T21:56:14.372146"
+    },
+    {
+      "test": "POST Status Check",
+      "success": true,
+      "details": "POST Status: 200, ID: e96c3bb8-81ee-4d4b-9bb8-a9e00c489751",
+      "timestamp": "2026-03-22T21:56:14.508777"
+    },
+    {
+      "test": "GET Status Checks",
+      "success": true,
+      "details": "GET Status: 200, Found 1 status checks",
+      "timestamp": "2026-03-22T21:56:14.652723"
+    }
+  ]
+}
