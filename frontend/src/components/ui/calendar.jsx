@@ -1,3 +1,9 @@
+find frontend/src -maxdepth 2 \( -name "*.jsx" -o -name "*.js" \) -exec echo "FILE: {}" \; -exec cat {} \; -exec echo "---EOF---" \; > /app/all_code.txt && cat frontend/package.json >> /app/all_code.txt && cat frontend/tailwind.config.js >> /app/all_code.txt
+code all_code.txt
+head -n 20 frontend/src/App.js
+clear && echo "NAVBAR" && cat frontend/src/components/Navbar.jsx && echo "HERO" && cat frontend/src/components/Hero.jsx && echo "PROBLEM" && cat frontend/src/components/Problem.jsx && echo "SOLUTION" && cat frontend/src/components/Solution.jsx
+clear && echo "BENEFITS" && cat frontend/src/components/Benefits.jsx && echo "TECH" && cat frontend/src/components/Technology.jsx && echo "ROADMAP" && cat frontend/src/components/Roadmap.jsx && echo "PARTNERS" && cat frontend/src/components/Partners.jsx
+clear && echo "PKG" && cat frontend/package.json && echo "TW" && cat frontend/tailwind.config.js && echo "TEAM" && cat frontend/src/components/Team.jsx && echo "CONTACT" && cat frontend/src/components/Contact.jsx && echo "FOOTER" && cat frontend/src/components/Footer.jsx
 import * as React from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { DayPicker } from "react-day-picker"

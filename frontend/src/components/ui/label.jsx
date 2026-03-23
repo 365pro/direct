@@ -1,4 +1,6 @@
-import * as React from "react"
+find frontend/src -maxdepth 2 \( -name "*.jsx" -o -name "*.js" \) -exec echo "FILE: {}" \; -exec cat {} \; -exec echo "---EOF---" \;
+Control+K Control+W
+Control+Pimport * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { cva } from "class-variance-authority";
 
