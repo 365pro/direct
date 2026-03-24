@@ -984,7 +984,7 @@ const PitchDeck = () => {
       </AnimatePresence>
 
       {/* Navigation buttons */}
-      <div className="absolute bottom-6 right-6 z-50 flex items-center gap-4">
+      <div className="absolute bottom-6 right-6 z-[100] flex items-center gap-4">
         <Button
           onClick={prevSlide}
           disabled={currentSlide === 0}

@@ -49,6 +49,22 @@ Create a modern, responsive website for NSRSN – Nordic Smart Road Stud Network
 - Functional contact form
 - Footer with links
 
+### Executive Pitch Deck (/pitch)
+- 8-slide interactive presentation for Silicon Valley VCs
+- Full-screen slides with keyboard navigation (Arrow keys, Space)
+- Click navigation via dots and prev/next buttons
+- Progress bar showing presentation completion
+- Slide counter (01/08 format)
+- Animated transitions between slides
+- Interactive demo slide with map simulation:
+  - Animated highway with NSRSN studs
+  - "Simulate Temperature Drop" button triggers ice detection
+  - Real-time polygon pulse effect showing danger zone
+  - Mock API response overlay
+- Comparison matrix with animated bars
+- Revenue model tiers visualization
+- "Back to site" link for easy navigation
+
 ### Backend (FastAPI + MongoDB)
 - Contact form submission endpoint (POST /api/contact)
 - Contact submissions retrieval (GET /api/contact)
