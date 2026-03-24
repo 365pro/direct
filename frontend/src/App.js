@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
 import "@/App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import axios from "axios";
 import { motion } from "framer-motion";
 import { 
   ChevronDown, Menu, X, Radio, Car, Database, Shield, 
   Target, TrendingUp, MapPin, Users, Zap, ArrowRight,
-  Mail, Building, MessageSquare, ExternalLink, Linkedin
+  Mail, Building, MessageSquare, ExternalLink, Linkedin,
+  Presentation
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Toaster, toast } from "sonner";
+import PitchDeck from "@/PitchDeck";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -43,7 +46,8 @@ const Navbar = () => {
     { name: "Benefits", href: "#benefits" },
     { name: "Technology", href: "#technology" },
     { name: "Roadmap", href: "#roadmap" },
-    { name: "Contact", href: "#contact" }
+    { name: "Contact", href: "#contact" },
+    { name: "Pitch Deck", href: "/pitch", isExternal: true }
   ];
 
   return (
@@ -65,14 +69,26 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                data-testid={`nav-link-${link.name.toLowerCase()}`}
-                className="text-sm text-slate-400 hover:text-white transition-colors"
-              >
-                {link.name}
-              </a>
+              link.isExternal ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  data-testid={`nav-link-${link.name.toLowerCase().replace(' ', '-')}`}
+                  className="flex items-center gap-1 text-sm text-amber-400 hover:text-amber-300 transition-colors"
+                >
+                  <Presentation className="w-4 h-4" />
+                  {link.name}
+                </a>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  data-testid={`nav-link-${link.name.toLowerCase()}`}
+                  className="text-sm text-slate-400 hover:text-white transition-colors"
+                >
+                  {link.name}
+                </a>
+              )
             ))}
             <a 
               href="#contact"
@@ -100,14 +116,26 @@ const Navbar = () => {
             className="md:hidden bg-[#0F1623] border border-white/10 rounded-sm p-6 mt-2"
           >
             {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="block py-3 text-slate-300 hover:text-white"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {link.name}
-              </a>
+              link.isExternal ? (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="flex items-center gap-2 py-3 text-amber-400 hover:text-amber-300"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Presentation className="w-4 h-4" />
+                  {link.name}
+                </a>
+              ) : (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className="block py-3 text-slate-300 hover:text-white"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.name}
+                </a>
+              )
             ))}
             <a href="#contact" className="block mt-4">
               <Button className="btn-primary w-full">Talk to Us</Button>
@@ -1026,10 +1054,10 @@ const Footer = () => {
   );
 };
 
-// Main App Component
-function App() {
+// Landing Page Component
+const LandingPage = () => {
   return (
-    <div className="App bg-[#050A14] min-h-screen">
+    <div className="bg-[#050A14] min-h-screen">
       <Toaster position="top-right" richColors />
       <Navbar />
       <main>
@@ -1044,6 +1072,20 @@ function App() {
         <Contact />
       </main>
       <Footer />
+    </div>
+  );
+};
+
+// Main App Component with Routing
+function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/pitch" element={<PitchDeck />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
